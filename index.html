@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio Dentistico Zappalà – Torino</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ice:    #F8FBFC;
+    --deep:   #1A3A4A;
+    --teal:   #5BADA3;
+    --gold:   #C8A96E;
+    --text:   #3D4D55;
+    --light:  #E8F2F4;
+    --white:  #FFFFFF;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--ice);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(248,251,252,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--light);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%;
+    height: 64px;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--deep);
+    letter-spacing: 0.02em;
+  }
+  .nav-logo span { color: var(--teal); }
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta {
+    background: var(--teal);
+    color: var(--white) !important;
+    padding: 0.45rem 1.1rem;
+    border-radius: 2px;
+  }
+  .nav-cta:hover { background: var(--deep); color: var(--white) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 120px 5% 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg-circle {
+    position: absolute; right: -120px; top: 50%;
+    transform: translateY(-50%);
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #5BADA322 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 1.2rem;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.6rem, 6vw, 4.6rem);
+    font-weight: 700;
+    color: var(--deep);
+    line-height: 1.1;
+    max-width: 700px;
+    margin-bottom: 0;
+  }
+
+  /* THE SIGNATURE: the smile-line divider */
+  .smile-line {
+    display: flex; align-items: center; gap: 1rem;
+    margin: 1.6rem 0;
+    max-width: 700px;
+  }
+  .smile-line::before, .smile-line::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .smile-line-tooth {
+    font-size: 1.1rem;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--text);
+    max-width: 560px;
+    line-height: 1.75;
+    margin-bottom: 2.4rem;
+  }
+  .hero-actions {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--teal);
+    color: var(--white);
+    text-decoration: none;
+    padding: 0.85rem 2rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--deep); transform: translateY(-2px); }
+  .btn-ghost {
+    display: inline-block;
+    border: 1.5px solid var(--deep);
+    color: var(--deep);
+    text-decoration: none;
+    padding: 0.85rem 2rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 2px;
+    transition: background 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { background: var(--deep); color: var(--white); }
+
+  /* ── PHILOSOPHY ── */
+  .philosophy {
+    background: var(--deep);
+    color: var(--white);
+    padding: 80px 5%;
+    display: flex; gap: 80px; align-items: center;
+    flex-wrap: wrap;
+  }
+  .philosophy-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--white);
+    flex: 1 1 380px;
+    line-height: 1.5;
+  }
+  .philosophy-quote em {
+    color: var(--gold);
+    font-style: normal;
+  }
+  .philosophy-body {
+    flex: 1 1 320px;
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: #a8c4cc;
+    line-height: 1.8;
+  }
+
+  /* ── SERVICES ── */
+  .services {
+    padding: 90px 5%;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+    font-weight: 600;
+    color: var(--deep);
+    margin-bottom: 2.5rem;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+  .service-card {
+    background: var(--white);
+    border: 1px solid var(--light);
+    border-top: 3px solid var(--teal);
+    padding: 1.8rem 1.5rem;
+    border-radius: 2px;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .service-card:hover { box-shadow: 0 8px 28px #1A3A4A14; transform: translateY(-3px); }
+  .service-icon { font-size: 1.6rem; margin-bottom: 0.8rem; }
+  .service-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--deep);
+    margin-bottom: 0.5rem;
+  }
+  .service-desc { font-size: 0.85rem; color: var(--text); line-height: 1.65; }
+
+  /* ── TEAM ── */
+  .team {
+    background: var(--light);
+    padding: 90px 5%;
+  }
+  .team-inner { max-width: 1000px; margin: 0 auto; }
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+    margin-top: 2.5rem;
+  }
+  .team-card {
+    background: var(--white);
+    border-radius: 4px;
+    padding: 2.4rem 2rem;
+    text-align: center;
+    border: 1px solid #ddeaed;
+    transition: box-shadow 0.2s;
+  }
+  .team-card:hover { box-shadow: 0 6px 24px #1A3A4A18; }
+  .team-avatar {
+    width: 88px; height: 88px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--teal), var(--deep));
+    margin: 0 auto 1.2rem;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--white);
+    font-weight: 700;
+    letter-spacing: -1px;
+  }
+  .team-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--deep);
+    margin-bottom: 0.3rem;
+  }
+  .team-role {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal);
+  }
+
+  /* ── HOURS ── */
+  .hours {
+    padding: 80px 5%;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex; gap: 60px; flex-wrap: wrap; align-items: flex-start;
+  }
+  .hours-left { flex: 1 1 280px; }
+  .hours-table { flex: 1 1 300px; }
+  .hours-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--light);
+    font-size: 0.9rem;
+  }
+  .hours-row:last-child { border-bottom: none; }
+  .day { font-weight: 500; color: var(--deep); text-transform: capitalize; }
+  .time { color: var(--teal); font-weight: 600; }
+  .closed { color: #aab4b8; font-style: italic; }
+
+  /* ── CTA BANNER ── */
+  .cta-banner {
+    background: linear-gradient(120deg, var(--deep) 60%, #2a5668 100%);
+    padding: 72px 5%;
+    text-align: center;
+  }
+  .cta-banner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    color: var(--white);
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+  }
+  .cta-banner p {
+    color: #a8c4cc;
+    font-size: 0.95rem;
+    margin-bottom: 1.8rem;
+  }
+  .btn-gold {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--deep);
+    text-decoration: none;
+    padding: 0.95rem 2.4rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-gold:hover { background: #d4b87a; transform: translateY(-2px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0f2530;
+    color: #6a8e99;
+    padding: 40px 5%;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+    font-size: 0.82rem;
+  }
+  footer strong { color: var(--white); }
+  footer a { color: var(--teal); text-decoration: none; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .philosophy { gap: 40px; }
+    .hours { gap: 40px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Studio Dentistico <span>Zappalà</span></div>
+  <ul class="nav-links">
+    <li><a href="#servizi">Servizi</a></li>
+    <li><a href="#team">Il Team</a></li>
+    <li><a href="#orari">Orari</a></li>
+    <li><a href="https://prenota.alfadocs.com/p/torino-studio-dentistico-d-ssa-chiara-zappal--4856" target="_blank" class="nav-cta">Prenota</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-circle"></div>
+  <p class="hero-eyebrow">Studio Dentistico – Torino</p>
+  <h1 class="hero-title">La salute della bocca inizia da un sorriso sereno</h1>
+  <div class="smile-line">
+    <span class="smile-line-tooth">✦ ✦ ✦</span>
+  </div>
+  <p class="hero-sub">Dalla pedodonzia alla protesi, ci prendiamo cura del tuo cavo orale a ogni età. La prevenzione è la nostra prima cura.</p>
+  <div class="hero-actions">
+    <a href="https://prenota.alfadocs.com/p/torino-studio-dentistico-d-ssa-chiara-zappal--4856" target="_blank" class="btn-primary">Prenota una visita</a>
+    <a href="#team" class="btn-ghost">Conosci il team</a>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy">
+  <p class="philosophy-quote">"La salute della bocca va tutelata <em>fin da piccoli</em>, con ogni strumento a nostra disposizione per prevenire ogni eventuale patologia."</p>
+  <p class="philosophy-body">La nostra filosofia si fonda sulla prevenzione e sulla continuità delle cure nel tempo. Seguiamo ogni paziente con attenzione personalizzata, dai bambini agli adulti, garantendo un ambiente accogliente e professionale.</p>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="servizi">
+  <p class="section-label">Le nostre cure</p>
+  <h2 class="section-title">Tutto ciò di cui la tua bocca ha bisogno</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🦷</div>
+      <div class="service-name">Pedodonzia</div>
+      <p class="service-desc">Cura del bambino e del suo sorriso fin dalle prime visite. Ambiente rassicurante per i più piccoli.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔬</div>
+      <div class="service-name">Prevenzione</div>
+      <p class="service-desc">Igiene professionale, controlli periodici e consigli personalizzati per mantenersi in salute.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">✨</div>
+      <div class="service-name">Protesi</div>
+      <p class="service-desc">Soluzioni protesiche fisse e mobili per restituire funzionalità ed estetica al tuo sorriso.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🩺</div>
+      <div class="service-name">Cavo Orale</div>
+      <p class="service-desc">Diagnosi e trattamento di tutte le patologie del cavo orale con tecnologia aggiornata.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">⚡</div>
+      <div class="service-name">Ortodonzia</div>
+      <p class="service-desc">Trattamenti ortodontici per bambini e adulti, tra cui apparecchi tradizionali e allineatori.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💉</div>
+      <div class="service-name">Implantologia</div>
+      <p class="service-desc">Impianti dentali sicuri e duraturi per sostituire uno o più denti mancanti.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team" id="team">
+  <div class="team-inner">
+    <p class="section-label">Il nostro team</p>
+    <h2 class="section-title">Le professioniste al tuo servizio</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">AB</div>
+        <div class="team-name">Dott.ssa Angelita Bisanti</div>
+        <div class="team-role">Dentista</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">FV</div>
+        <div class="team-name">Dott.ssa Francesca Del Villano</div>
+        <div class="team-role">Dentista</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">CZ</div>
+        <div class="team-name">Dott.ssa Chiara Zappalà</div>
+        <div class="team-role">Dentista</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS -->
+<section class="hours" id="orari">
+  <div class="hours-left">
+    <p class="section-label">Quando siamo aperti</p>
+    <h2 class="section-title">Orari di apertura</h2>
+    <p style="font-size:0.9rem; color:var(--text); line-height:1.7;">Siamo aperti sei giorni su sette per garantirti la massima disponibilità. Per urgenze o informazioni, chiamaci direttamente.</p>
+  </div>
+  <div class="hours-table">
+    <div class="hours-row"><span class="day">Lunedì</span><span class="time">09:30 – 19:30</span></div>
+    <div class="hours-row"><span class="day">Martedì</span><span class="time">09:30 – 19:30</span></div>
+    <div class="hours-row"><span class="day">Mercoledì</span><span class="time">09:30 – 19:30</span></div>
+    <div class="hours-row"><span class="day">Giovedì</span><span class="time">09:30 – 19:30</span></div>
+    <div class="hours-row"><span class="day">Venerdì</span><span class="time">09:30 – 19:30</span></div>
+    <div class="hours-row"><span class="day">Sabato</span><span class="time">09:30 – 19:30</span></div>
+    <div class="hours-row"><span class="day">Domenica</span><span class="closed">Chiuso</span></div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <h2>Prenota la tua visita oggi</h2>
+  <p>Compila il modulo online in pochi secondi. Riceverai conferma rapidamente.</p>
+  <a href="https://prenota.alfadocs.com/p/torino-studio-dentistico-d-ssa-chiara-zappal--4856" target="_blank" class="btn-gold">Prenota Ora →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <strong>Studio Dentistico Zappalà</strong><br>
+    Torino &nbsp;·&nbsp; P.IVA — contattaci per informazioni
+  </div>
+  <div>
+    <a href="https://prenota.alfadocs.com/p/torino-studio-dentistico-d-ssa-chiara-zappal--4856" target="_blank">Prenota online</a>
+    &nbsp;·&nbsp; © 2026 Studio Dentistico Zappalà
+  </div>
+</footer>
+
+</body>
+</html>
